@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.strawpoll.databinding.PollListContentBinding
-import com.example.strawpoll.persistence.entities.Poll
+import com.example.strawpoll.domain.StrawpollProperty
 
 class PollAdapter(val clickListener: PollListener) :
-    ListAdapter<Poll, PollAdapter.ViewHolder>(PollDiffCallback()) {
+    ListAdapter<StrawpollProperty, PollAdapter.ViewHolder>(PollDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -22,7 +22,7 @@ class PollAdapter(val clickListener: PollListener) :
     class ViewHolder private constructor(val binding: PollListContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: Poll,
+            item: StrawpollProperty,
             clickListener: PollListener
         ) {
             binding.poll = item
@@ -40,17 +40,17 @@ class PollAdapter(val clickListener: PollListener) :
     }
 }
 
-class PollDiffCallback : DiffUtil.ItemCallback<Poll>() {
-    override fun areItemsTheSame(oldItem: Poll, newItem: Poll): Boolean {
-        return oldItem.pollId == newItem.pollId
+class PollDiffCallback : DiffUtil.ItemCallback<StrawpollProperty>() {
+    override fun areItemsTheSame(oldItem: StrawpollProperty, newItem: StrawpollProperty): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Poll, newItem: Poll): Boolean {
+    override fun areContentsTheSame(oldItem: StrawpollProperty, newItem: StrawpollProperty): Boolean {
         return oldItem == newItem
     }
 
 }
 
-class PollListener(val clickListener: (pollId: Long) -> Unit) {
-    fun onClick(poll: Poll) = clickListener(poll.pollId)
+class PollListener(val clickListener: (poll: StrawpollProperty) -> Unit) {
+    fun onClick(poll: StrawpollProperty) = clickListener(poll)
 }

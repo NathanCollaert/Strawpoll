@@ -1,7 +1,5 @@
 package com.example.strawpoll.ui.vote
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +8,13 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.strawpoll.R
 import com.example.strawpoll.databinding.FragmentVoteBinding
+import com.example.strawpoll.ui.list.ListFragmentDirections
 
 class VoteFragment : Fragment() {
 
@@ -20,20 +22,35 @@ class VoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentVoteBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_vote, container, false)
-        //binding.pollQuestion.text = VoteFragmentArgs.fromBundle(
-        //    arguments!!
-        //).question
-        //for(i in 0 until VoteFragmentArgs.fromBundle(arguments!!).answers.size){
-        //    val rb = RadioButton(this.context)
-        //    rb.text = VoteFragmentArgs.fromBundle(arguments!!).answers[i]
-        //    rb.id = i
-        //    binding.answerGroup.addView(rb)
-        //}
+        val application = requireNotNull(this.activity).application
+
+        val binding: FragmentVoteBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_vote, container, false)
+
+        binding.lifecycleOwner = this
+
+        val selectedStrawpoll = VoteFragmentArgs.fromBundle(arguments!!).selectedStrawpoll
+
+        val viewModelFactory = VoteViewModelFactory(selectedStrawpoll, application)
+
+        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(VoteViewModel::class.java)
+
+        binding.viewModel = viewModel
+
+        viewModel.selectedStrawpoll.observe(this, Observer { poll ->
+            poll?.let {
+                poll.answers.forEach {
+                    val rb = RadioButton(this.context)
+                    rb.text = it.answer
+                    rb.id = it.id
+                    binding.answerGroup.addView(rb)
+                }
+            }
+        })
 
         var chosenId = -1
         binding.answerGroup.setOnCheckedChangeListener(
-            RadioGroup.OnCheckedChangeListener { _, i->
+            RadioGroup.OnCheckedChangeListener { _, i ->
                 chosenId = i
                 binding.voteButton.isClickable = true
             })

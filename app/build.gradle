@@ -30,6 +30,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    androidExtensions{
+        experimental = true;
+    }
 }
 
 dependencies {
@@ -65,8 +69,13 @@ dependencies {
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit: $version_retrofit"
-    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$version_retrofit_coroutines_adapter"
 
     // Data binding
     annotationProcessor 'androidx.databinding:databinding-compiler:3.5.3'
+
+    //Moshi
+    implementation "com.squareup.moshi:moshi:$version_moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
 }

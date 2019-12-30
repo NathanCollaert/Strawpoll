@@ -34,14 +34,12 @@ class ListFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        binding.viewModel = listViewModel
-
         val adapter = PollAdapter(PollListener { pollId ->
             listViewModel.onPollClick(pollId)
         })
 
-        listViewModel.navigateToPoll.observe(this,Observer{poll ->
-            poll?.let {
+        listViewModel.navigateToPoll.observe(this,Observer{
+            if(it != null){
                 this.findNavController().navigate(ListFragmentDirections.actionListFragmentToVoteFragment(it))
                 listViewModel.onPollClickNavigated()
             }
@@ -49,7 +47,7 @@ class ListFragment : Fragment() {
 
         binding.pollList.adapter = adapter
 
-        listViewModel.polls.observe(viewLifecycleOwner, Observer {
+        listViewModel.properties.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }

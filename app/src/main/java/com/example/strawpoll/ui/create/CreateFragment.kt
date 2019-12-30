@@ -23,15 +23,15 @@ class CreateFragment : Fragment() {
         val binding: FragmentCreateBinding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_create, container, false)
 
-        binding.createButton.setOnClickListener{view:View ->
-            if(binding.pollQuestion.text.toString() != "" && binding.answer1.text.toString() != "" && binding.answer2.text.toString() != ""){
-                view.findNavController().navigate(
-                    CreateFragmentDirections.actionCreateFragmentToVoteFragment(
-                        Long.MIN_VALUE
-                    )
-                )
-            }
-        }
+        //binding.createButton.setOnClickListener{view:View ->
+        //    if(binding.pollQuestion.text.toString() != "" && binding.answer1.text.toString() != "" && binding.answer2.text.toString() != ""){
+        //        view.findNavController().navigate(
+        //            CreateFragmentDirections.actionCreateFragmentToVoteFragment(
+        //                Long.MIN_VALUE
+        //            )
+        //        )
+        //    }
+        //}
 
         viewModel = ViewModelProviders.of(this).get(CreateViewModel::class.java)
 
