@@ -3,6 +3,7 @@ package com.example.strawpoll.ui.list
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,9 +26,7 @@ class ListFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
 
-        val dataSource = StrawpollDatabase.getInstance(application).pollDao
-
-        val viewModelFactory = ListViewModelFactory(dataSource, application)
+        val viewModelFactory = ListViewModelFactory(application)
 
         val listViewModel =
             ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
@@ -47,7 +46,7 @@ class ListFragment : Fragment() {
 
         binding.pollList.adapter = adapter
 
-        listViewModel.properties.observe(viewLifecycleOwner, Observer {
+        listViewModel.strawpolls.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
             }

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Strawpoll</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="startStrawpollButton">Create a poll</string>
+    <string name="startStrawpollButton">Create a strawpoll</string>
     <string name="answerHint">Answer</string>
     <string name="questionHint">Question</string>
     <string name="one">1</string>
@@ -12,9 +12,9 @@
     <string name="createButton">Create</string>
     <string name="voteButton">vote</string>
     <string name="share">share</string>
-    <string name="share_success_text">I voted on answer %1$s in this poll!</string>
+    <string name="share_success_text">I voted on answer %1$s in this strawpoll!</string>
     <string name="list">List</string>
-    <string name="aboutText">De strawpoll app is een applicatie waarmee je een eigen poll kan maken en delen met je vrienden. Het voting systeem gebeurt annoniem en zonder gegevens bij te houden van de gebruiker. Het aanmaken van een poll is zeer simpel en flexibel.</string>
+    <string name="aboutText">De strawpoll app is een applicatie waarmee je een eigen strawpoll kan maken en delen met je vrienden. Het voting systeem gebeurt annoniem en zonder gegevens bij te houden van de gebruiker. Het aanmaken van een strawpoll is zeer simpel en flexibel.</string>
     <string name="aboutTitle">About</string>
     <string name="strawpollListItemImageDescription">Total Votes Image</string>
     <string name="listStatus">StatusImage</string>

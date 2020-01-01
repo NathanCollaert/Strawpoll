@@ -1,12 +1,15 @@
 package com.example.strawpoll.ui.list
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.strawpoll.network.StrawpollApi
-import com.example.strawpoll.domain.StrawpollProperty
-import com.example.strawpoll.persistence.daos.PollDao
+import com.example.strawpoll.domain.Strawpoll
+import com.example.strawpoll.persistence.StrawpollDatabase
+import com.example.strawpoll.persistence.daos.StrawpollDao
+import com.example.strawpoll.persistence.repositories.StrawpollRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -14,55 +17,57 @@ import kotlinx.coroutines.launch
 
 enum class StrawpollApiStatus { LOADING, ERROR, DONE }
 
-class ListViewModel(val database: PollDao, application: Application) :
+class ListViewModel(application: Application) :
     AndroidViewModel(application) {
 
+    //Coroutines
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    //
 
-    val polls = database.getAllPolls()
-
-    private val _navigateToPoll = MutableLiveData<StrawpollProperty>()
+    //Navigation property
+    private val _navigateToPoll = MutableLiveData<Strawpoll>()
     val navigateToPoll
         get() = _navigateToPoll
 
-    private val _status = MutableLiveData<StrawpollApiStatus>()
-    val status: LiveData<StrawpollApiStatus>
-        get() = _status
-
-    private val _properties = MutableLiveData<List<StrawpollProperty>>()
-    val properties: LiveData<List<StrawpollProperty>>
-        get() = _properties
-
-    init {
-        getStrawpolls()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
-
-    fun onPollClick(poll:StrawpollProperty) {
+    fun onPollClick(poll: Strawpoll) {
         _navigateToPoll.value = poll
     }
 
     fun onPollClickNavigated() {
         _navigateToPoll.value = null
     }
+    //
 
-    private fun getStrawpolls() {
+    //API status
+    private val _status = MutableLiveData<StrawpollApiStatus>()
+    val status: LiveData<StrawpollApiStatus>
+        get() = _status
+    //
+
+    //repository
+    private val database = StrawpollDatabase.getInstance(application)
+    private val strawpollRepository = StrawpollRepository(database)
+    //
+
+    //Data
+    val strawpolls = strawpollRepository.strawpolls
+    //
+
+    init {
         uiScope.launch {
-            var getPropertiesDeferred = StrawpollApi.retrofitService.getProperties()
             try {
                 _status.value = StrawpollApiStatus.LOADING
-                var listResult = getPropertiesDeferred.await()
-                _properties.value = listResult
+                strawpollRepository.refreshStrawpolls()
                 _status.value = StrawpollApiStatus.DONE
             } catch (t: Throwable) {
                 _status.value = StrawpollApiStatus.ERROR
-                _properties.value = ArrayList()
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelJob.cancel()
     }
 }

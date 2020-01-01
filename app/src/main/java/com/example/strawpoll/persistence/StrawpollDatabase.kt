@@ -4,13 +4,15 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.strawpoll.persistence.daos.PollDao
-import com.example.strawpoll.persistence.entities.Poll
+import com.example.strawpoll.persistence.daos.StrawpollDao
+import com.example.strawpoll.persistence.entities.DatabaseAnswer
+import com.example.strawpoll.persistence.entities.DatabaseStrawpoll
+import com.example.strawpoll.persistence.entities.DatabaseVotedUUID
 
-@Database(entities = [Poll::class], version = 1, exportSchema = false)
+@Database(entities = [DatabaseStrawpoll::class, DatabaseAnswer::class, DatabaseVotedUUID::class], version = 9, exportSchema = false)
 abstract class StrawpollDatabase : RoomDatabase() {
 
-    abstract val pollDao: PollDao
+    abstract val strawpollDao: StrawpollDao
 
     companion object {
         @Volatile

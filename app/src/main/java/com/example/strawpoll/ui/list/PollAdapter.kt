@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.strawpoll.databinding.PollListContentBinding
-import com.example.strawpoll.domain.StrawpollProperty
+import com.example.strawpoll.domain.Strawpoll
 
 class PollAdapter(val clickListener: PollListener) :
-    ListAdapter<StrawpollProperty, PollAdapter.ViewHolder>(PollDiffCallback()) {
+    ListAdapter<Strawpoll, PollAdapter.ViewHolder>(PollDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -22,10 +22,10 @@ class PollAdapter(val clickListener: PollListener) :
     class ViewHolder private constructor(val binding: PollListContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: StrawpollProperty,
+            item: Strawpoll,
             clickListener: PollListener
         ) {
-            binding.poll = item
+            binding.strawpoll = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
@@ -40,17 +40,17 @@ class PollAdapter(val clickListener: PollListener) :
     }
 }
 
-class PollDiffCallback : DiffUtil.ItemCallback<StrawpollProperty>() {
-    override fun areItemsTheSame(oldItem: StrawpollProperty, newItem: StrawpollProperty): Boolean {
+class PollDiffCallback : DiffUtil.ItemCallback<Strawpoll>() {
+    override fun areItemsTheSame(oldItem: Strawpoll, newItem: Strawpoll): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: StrawpollProperty, newItem: StrawpollProperty): Boolean {
+    override fun areContentsTheSame(oldItem: Strawpoll, newItem: Strawpoll): Boolean {
         return oldItem == newItem
     }
 
 }
 
-class PollListener(val clickListener: (poll: StrawpollProperty) -> Unit) {
-    fun onClick(poll: StrawpollProperty) = clickListener(poll)
+class PollListener(val clickListener: (poll: Strawpoll) -> Unit) {
+    fun onClick(poll: Strawpoll) = clickListener(poll)
 }

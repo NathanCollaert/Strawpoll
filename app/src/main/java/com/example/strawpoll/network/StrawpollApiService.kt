@@ -1,6 +1,6 @@
 package com.example.strawpoll.network
 
-import com.example.strawpoll.domain.StrawpollProperty
+import com.example.strawpoll.network.dtos.StrawpollDTO
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -24,7 +24,7 @@ private val retrofit = Retrofit.Builder()
 interface StrawpollApiService{
     @GET("strawpoll")
     fun getProperties():
-            Deferred<List<StrawpollProperty>>
+            Deferred<List<StrawpollDTO>>
 }
 
 object StrawpollApi{

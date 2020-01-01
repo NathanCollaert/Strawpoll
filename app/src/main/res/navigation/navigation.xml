@@ -35,7 +35,7 @@
             app:popUpTo="@+id/titleFragment" />
         <argument
             android:name="selectedStrawpoll"
-            app:argType="com.example.strawpoll.domain.StrawpollProperty" />
+            app:argType="com.example.strawpoll.domain.Strawpoll" />
     </fragment>
     <fragment
         android:id="@+id/listFragment"
