@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.about.AboutFragment">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -13,6 +14,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/quicksand"
             android:text="@string/aboutText"
             android:textColor="@android:color/black"
             android:textSize="18sp"

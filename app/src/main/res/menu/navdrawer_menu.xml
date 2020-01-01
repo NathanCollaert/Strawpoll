@@ -2,6 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:icon="@android:drawable/btn_dropdown"
-        android:title="@string/list" />
+        android:id="@+id/aboutFragment"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/aboutTitle" />
+    <item
+        android:id="@+id/listFragment"
+        android:icon="@android:drawable/ic_search_category_default"
+        android:title="@string/discover" />
+    <item
+        android:id="@+id/createFragment"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/startStrawpollButton" />
 </menu>

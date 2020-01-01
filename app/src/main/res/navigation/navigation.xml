@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/titleFragment">
+    app:startDestination="@id/listFragment">
 
-    <fragment
-        android:id="@+id/titleFragment"
-        android:name="com.example.strawpoll.ui.title.TitleFragment"
-        android:label="fragment_title"
-        tools:layout="@layout/fragment_title" >
-        <action
-            android:id="@+id/action_titleFragment_to_createFragment"
-            app:destination="@id/createFragment" />
-    </fragment>
     <fragment
         android:id="@+id/createFragment"
         android:name="com.example.strawpoll.ui.create.CreateFragment"
@@ -22,7 +13,7 @@
         <action
             android:id="@+id/action_createFragment_to_voteFragment"
             app:destination="@id/voteFragment"
-            app:popUpTo="@+id/titleFragment" />
+            app:popUpTo="@+id/listFragment" />
     </fragment>
     <fragment
         android:id="@+id/voteFragment"
@@ -32,7 +23,7 @@
         <action
             android:id="@+id/action_voteFragment_to_resultFragment"
             app:destination="@id/resultFragment"
-            app:popUpTo="@+id/titleFragment" />
+            app:popUpTo="@+id/listFragment" />
         <argument
             android:name="selectedStrawpoll"
             app:argType="com.example.strawpoll.domain.Strawpoll" />

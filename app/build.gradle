@@ -85,4 +85,7 @@ dependencies {
 
     //work
     implementation "android.arch.work:work-runtime-ktx:$version_work"
+
+    //Material
+    implementation "com.google.android.material:material:$version_material"
 }
