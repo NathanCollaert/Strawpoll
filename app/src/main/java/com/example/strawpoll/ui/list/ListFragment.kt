@@ -22,14 +22,11 @@ class ListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding: FragmentListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
-
-        val application = requireNotNull(this.activity).application
-
-        val viewModelFactory = ListViewModelFactory(application)
+        val binding: FragmentListBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_list, container, false)
 
         val listViewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
+            ViewModelProviders.of(this).get(ListViewModel::class.java)
 
         binding.lifecycleOwner = this
 
@@ -37,9 +34,10 @@ class ListFragment : Fragment() {
             listViewModel.onPollClick(pollId)
         })
 
-        listViewModel.navigateToPoll.observe(this,Observer{
-            if(it != null){
-                this.findNavController().navigate(ListFragmentDirections.actionListFragmentToVoteFragment(it))
+        listViewModel.navigateToPoll.observe(this, Observer {
+            if (it != null) {
+                this.findNavController()
+                    .navigate(ListFragmentDirections.actionListFragmentToVoteFragment(it))
                 listViewModel.onPollClickNavigated()
             }
         })

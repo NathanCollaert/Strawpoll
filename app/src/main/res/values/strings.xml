@@ -12,7 +12,7 @@
     <string name="createButton">Create</string>
     <string name="voteButton">vote</string>
     <string name="share">share</string>
-    <string name="share_success_text">I voted on answer %1$s in this strawpoll!</string>
+    <string name="share_success_text">Check out this awesome poll I found on The Strawpoll App!</string>
     <string name="discover">Discover</string>
     <string name="aboutText">De strawpoll app is een applicatie waarmee je een eigen strawpoll kan maken en delen met je vrienden. Het voting systeem gebeurt annoniem en zonder gegevens bij te houden van de gebruiker. Het aanmaken van een strawpoll is zeer simpel en flexibel.</string>
     <string name="aboutTitle">About</string>

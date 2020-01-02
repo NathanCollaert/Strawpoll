@@ -48,17 +48,14 @@ class VoteFragment : Fragment() {
             }
         })
 
-        var chosenId = -1
-        binding.answerGroup.setOnCheckedChangeListener(
-            RadioGroup.OnCheckedChangeListener { _, i ->
-                chosenId = i
-                binding.voteButton.isClickable = true
-            })
+        binding.answerGroup.setOnCheckedChangeListener { _, _ ->
+            binding.voteButton.isClickable = true
+        }
 
         binding.voteButton.setOnClickListener { view: View ->
             view.findNavController().navigate(
                 VoteFragmentDirections.actionVoteFragmentToResultFragment(
-                    chosenId
+                    viewModel.selectedStrawpoll.value!!
                 )
             )
         }

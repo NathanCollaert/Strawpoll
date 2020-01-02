@@ -46,8 +46,8 @@
         android:label="fragment_result"
         tools:layout="@layout/fragment_result" >
         <argument
-            android:name="answerChosenId"
-            app:argType="integer" />
+            android:name="selectedPoll"
+            app:argType="com.example.strawpoll.domain.Strawpoll" />
     </fragment>
     <fragment
         android:id="@+id/aboutFragment"

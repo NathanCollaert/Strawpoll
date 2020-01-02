@@ -6,4 +6,6 @@
     <color name="buttonColor">#FF9900</color>
     <color name="buttonRippleColor">#FFB073</color>
     <color name="backgroundColor">#EEEEEE</color>
+    <color name="warningColor">#856404</color>
+    <color name="WarningBackgroundColor">#fff3cd</color>
 </resources>
