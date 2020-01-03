@@ -20,4 +20,6 @@
     <string name="listStatus">StatusImage</string>
     <string name="lijnNummer">0.</string>
     <string name="pollWarning">The content of polls is neither created nor endorsed by strawpoll.</string>
+    <string name="votingHint">Choose one answer:</string>
+    <string name="createPollMenu">Create a poll</string>
 </resources>

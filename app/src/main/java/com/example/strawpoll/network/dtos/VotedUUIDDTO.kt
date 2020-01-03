@@ -6,8 +6,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class VotedUUIDDTO(
-    val votedUUIDId:Int,
-    val uuid:String
+    val votedUUIDId: Int,
+    val uuid: String
 )
 
 fun List<VotedUUIDDTO>.asDomainModel(): List<VotedUUID> {

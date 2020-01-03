@@ -13,7 +13,27 @@
     <style name="buttonStyle">
         <item name="android:textColor">#fff</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:background">@drawable/strawpoll_button_ripple</item>
+        <item name="android:background">@drawable/strawpoll_button</item>
+    </style>
+
+    <style name="questionTitle">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="dividerStyle">
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:background">@color/buttonColor</item>
+    </style>
+
+    <style name="radioButtonStyle">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="buttonTint">@color/buttonColor</item>
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>

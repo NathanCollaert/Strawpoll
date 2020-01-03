@@ -11,10 +11,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.strawpoll.R
 import com.example.strawpoll.databinding.FragmentListBinding
 import com.example.strawpoll.persistence.StrawpollDatabase
+import com.example.strawpoll.ui.vote.VoteFragmentDirections
 
 class ListFragment : Fragment() {
 
@@ -36,8 +38,14 @@ class ListFragment : Fragment() {
 
         listViewModel.navigateToPoll.observe(this, Observer {
             if (it != null) {
-                this.findNavController()
-                    .navigate(ListFragmentDirections.actionListFragmentToVoteFragment(it))
+                if (listViewModel.alreadyVoted.value!!) {
+                    this.findNavController().navigate(
+                        VoteFragmentDirections.actionVoteFragmentToResultFragment(it)
+                    )
+                } else {
+                    this.findNavController()
+                        .navigate(ListFragmentDirections.actionListFragmentToVoteFragment(it))
+                }
                 listViewModel.onPollClickNavigated()
             }
         })

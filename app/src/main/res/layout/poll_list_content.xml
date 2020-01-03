@@ -47,9 +47,10 @@
 
         <TextView
             android:id="@+id/strawpollQuestion"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:hyphenationFrequency="none"
             android:maxLines="2"
             android:scrollHorizontally="false"
             android:text="@string/questionHint"
@@ -57,17 +58,19 @@
             android:textStyle="bold"
             app:Question="@{strawpoll}"
             app:layout_constraintBottom_toTopOf="@+id/strawpollDateAdded"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/strawpollDateAdded"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="dateAdded"
             app:DateAdded="@{strawpoll}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/strawpollQuestion" />
     </androidx.constraintlayout.widget.ConstraintLayout>

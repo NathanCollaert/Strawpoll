@@ -9,7 +9,7 @@ import com.example.strawpoll.persistence.entities.DatabaseAnswer
 import com.example.strawpoll.persistence.entities.DatabaseStrawpoll
 import com.example.strawpoll.persistence.entities.DatabaseVotedUUID
 
-@Database(entities = [DatabaseStrawpoll::class, DatabaseAnswer::class, DatabaseVotedUUID::class], version = 9, exportSchema = false)
+@Database(entities = [DatabaseStrawpoll::class, DatabaseAnswer::class, DatabaseVotedUUID::class], version = 11, exportSchema = false)
 abstract class StrawpollDatabase : RoomDatabase() {
 
     abstract val strawpollDao: StrawpollDao

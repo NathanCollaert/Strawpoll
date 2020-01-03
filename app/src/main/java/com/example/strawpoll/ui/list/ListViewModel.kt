@@ -14,6 +14,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.util.*
+import java.util.stream.Collectors
 
 enum class StrawpollApiStatus { LOADING, ERROR, DONE }
 
@@ -30,12 +32,18 @@ class ListViewModel(application: Application) :
     val navigateToPoll
         get() = _navigateToPoll
 
+    private val _alreadyVoted = MutableLiveData<Boolean>()
+    val alreadyVoted
+        get() = _alreadyVoted
+
     fun onPollClick(poll: Strawpoll) {
+        _alreadyVoted.value = poll.alreadyVoted.stream().map { e -> e.uuid }.collect(Collectors.toList()).contains(UUID.randomUUID().toString())
         _navigateToPoll.value = poll
     }
 
     fun onPollClickNavigated() {
         _navigateToPoll.value = null
+        _alreadyVoted.value = false
     }
     //
 
@@ -51,7 +59,7 @@ class ListViewModel(application: Application) :
     //
 
     //Data
-    val strawpolls = strawpollRepository.strawpolls
+    var strawpolls = strawpollRepository.strawpolls
     //
 
     init {

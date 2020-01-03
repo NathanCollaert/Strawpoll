@@ -5,7 +5,6 @@ import androidx.room.Relation
 import com.example.strawpoll.domain.Answer
 import com.example.strawpoll.domain.Strawpoll
 import com.example.strawpoll.domain.VotedUUID
-import com.example.strawpoll.network.dtos.StrawpollDTO
 import java.time.LocalDateTime
 
 class StrawpollAllAnswersAndVoters {
@@ -13,14 +12,14 @@ class StrawpollAllAnswersAndVoters {
     var strawpoll: DatabaseStrawpoll? = null
 
     @Relation(parentColumn = "id", entityColumn = "strawpollId")
-    var answers: List<DatabaseAnswer> = emptyList()
+    var answers: MutableList<DatabaseAnswer> = ArrayList()
 
     @Relation(parentColumn = "id", entityColumn = "strawpollId")
-    var alreadyVoted: List<DatabaseVotedUUID> = emptyList()
+    var alreadyVoted: MutableList<DatabaseVotedUUID> = ArrayList()
 }
 
 fun List<StrawpollAllAnswersAndVoters>.asDomainModel(): List<Strawpoll> {
-    return map{
+    return map {
         Strawpoll(
             id = it.strawpoll!!.id,
             question = it.strawpoll!!.question,
@@ -31,21 +30,21 @@ fun List<StrawpollAllAnswersAndVoters>.asDomainModel(): List<Strawpoll> {
     }
 }
 
-fun List<DatabaseAnswer>.answersDBToDomain(): List<Answer> {
+fun MutableList<DatabaseAnswer>.answersDBToDomain(): MutableList<Answer> {
     return map {
         Answer(
             id = it.id,
             answer = it.answer,
             amountVoted = it.amountVoted
         )
-    }
+    }.toMutableList()
 }
 
-fun List<DatabaseVotedUUID>.votedUUIDDBToDomain(): List<VotedUUID> {
+fun MutableList<DatabaseVotedUUID>.votedUUIDDBToDomain(): MutableList<VotedUUID> {
     return map {
         VotedUUID(
             id = it.id,
             uuid = it.uuid
         )
-    }
+    }.toMutableList()
 }

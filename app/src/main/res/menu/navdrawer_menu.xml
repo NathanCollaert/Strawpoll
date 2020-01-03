@@ -12,5 +12,6 @@
     <item
         android:id="@+id/createFragment"
         android:icon="@android:drawable/ic_input_add"
-        android:title="@string/startStrawpollButton" />
+        android:iconTint="#4CAF50"
+        android:title="@string/createPollMenu" />
 </menu>
