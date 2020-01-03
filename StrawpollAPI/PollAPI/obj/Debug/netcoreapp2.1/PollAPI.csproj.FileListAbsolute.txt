@@ -1,0 +1,14 @@
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.deps.json
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.runtimeconfig.json
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.runtimeconfig.dev.json
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.dll
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.csprojAssemblyReference.cache
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.csproj.CoreCompileInputs.cache
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.RazorAssemblyInfo.cache
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.RazorAssemblyInfo.cs
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.AssemblyInfoInputs.cache
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.AssemblyInfo.cs
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.RazorTargetAssemblyInfo.cache
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.pdb
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.dll
+c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.pdb
