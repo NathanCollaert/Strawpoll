@@ -12,3 +12,17 @@ c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.
 c:\users\pc_nathan\source\repos\PollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.pdb
 c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.dll
 c:\users\pc_nathan\source\repos\PollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.pdb
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.deps.json
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.runtimeconfig.json
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.runtimeconfig.dev.json
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.dll
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\bin\Debug\netcoreapp2.1\PollAPI.pdb
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.csprojAssemblyReference.cache
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.csproj.CoreCompileInputs.cache
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.RazorAssemblyInfo.cache
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.RazorAssemblyInfo.cs
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.AssemblyInfoInputs.cache
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.AssemblyInfo.cs
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.RazorTargetAssemblyInfo.cache
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.dll
+C:\Users\PC_Nathan\Desktop\Strawpoll\StrawpollAPI\PollAPI\obj\Debug\netcoreapp2.1\PollAPI.pdb

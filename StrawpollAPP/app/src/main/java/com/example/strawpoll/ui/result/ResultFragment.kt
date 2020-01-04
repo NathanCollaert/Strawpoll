@@ -39,6 +39,7 @@ class ResultFragment : Fragment() {
 
         val adapter =
             AnswerAdapter(viewModel.answers.value!!.stream().collect(Collectors.summingInt(Answer::amountVoted)))
+
         binding.answerList.adapter = adapter
 
         viewModel.answers.observe(viewLifecycleOwner, Observer {

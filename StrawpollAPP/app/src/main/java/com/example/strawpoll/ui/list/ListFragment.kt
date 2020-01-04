@@ -40,7 +40,7 @@ class ListFragment : Fragment() {
             if (it != null) {
                 if (listViewModel.alreadyVoted.value!!) {
                     this.findNavController().navigate(
-                        VoteFragmentDirections.actionVoteFragmentToResultFragment(it)
+                        ListFragmentDirections.actionListFragmentToResultFragment(it)
                     )
                 } else {
                     this.findNavController()

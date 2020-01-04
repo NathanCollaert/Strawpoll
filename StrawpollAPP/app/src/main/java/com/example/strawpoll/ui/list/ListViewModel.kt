@@ -1,6 +1,8 @@
 package com.example.strawpoll.ui.list
 
+import android.annotation.SuppressLint
 import android.app.Application
+import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -27,6 +29,8 @@ class ListViewModel(application: Application) :
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     //
 
+    var app = application
+
     //Navigation property
     private val _navigateToPoll = MutableLiveData<Strawpoll>()
     val navigateToPoll
@@ -36,8 +40,15 @@ class ListViewModel(application: Application) :
     val alreadyVoted
         get() = _alreadyVoted
 
+    @SuppressLint("HardwareIds")
     fun onPollClick(poll: Strawpoll) {
-        _alreadyVoted.value = poll.alreadyVoted.stream().map { e -> e.uuid }.collect(Collectors.toList()).contains(UUID.randomUUID().toString())
+        _alreadyVoted.value =
+            poll.alreadyVoted.stream().map { e -> e.uuid }.collect(Collectors.toList()).contains(
+                Settings.Secure.getString(
+                    app.contentResolver,
+                    Settings.Secure.ANDROID_ID
+                )
+            )
         _navigateToPoll.value = poll
     }
 

@@ -50,6 +50,13 @@ fun TextView.setTotalVotesResult(item: Strawpoll?) {
     }
 }
 
+@BindingAdapter("AnwserString")
+fun TextView.setAnwserString(item: Answer?) {
+    item?.let {
+        text = item.answer
+    }
+}
+
 @BindingAdapter("StrawpollApiStatus")
 fun bindStatus(statusImageView: ImageView, status: StrawpollApiStatus?) {
     when (status) {

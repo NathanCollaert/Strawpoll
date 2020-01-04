@@ -1,32 +1,105 @@
 package com.example.strawpoll.ui.create
 
+import android.app.Application
+import android.content.Context
+import android.util.Log
+import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.strawpoll.domain.Answer
+import com.example.strawpoll.domain.Strawpoll
+import com.example.strawpoll.domain.VotedUUID
+import com.example.strawpoll.persistence.StrawpollDatabase
+import com.example.strawpoll.persistence.repositories.StrawpollRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.text.DateFormat
+import java.time.LocalDateTime
+import java.util.stream.Collectors
 
-class CreateViewModel : ViewModel() {
+class CreateViewModel(app: Application) : AndroidViewModel(app) {
 
-    private lateinit var question: String
-    private val _answers = MutableLiveData<MutableList<Answer>>()
-    val answers: LiveData<MutableList<Answer>>
-        get() = _answers
+    var question: String = ""
+    var answer1: String = ""
+    var answer2: String = ""
+    var answer3: String = ""
+    var answer4: String = ""
+    var answer5: String = ""
+    var answer6: String = ""
+    var answer7: String = ""
+    var answer8: String = ""
+    var answer9: String = ""
 
-    init {
-        createAnswerList()
+    private val _strawpoll = MutableLiveData<Strawpoll>()
+    val strawpoll: LiveData<Strawpoll>
+        get() = _strawpoll
+
+    //Coroutines
+    private var viewModelJob = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    //
+
+    //repository
+    private val database = StrawpollDatabase.getInstance(app)
+    private val strawpollRepository = StrawpollRepository(database)
+    //
+
+    //fun onAnswerChanged() {
+    //    if (!_answers.value!!.map { e -> e.answer }.contains("")) {
+    //        addAnswerToList()
+    //    }
+    //}
+
+    fun onSubmit() {
+        val answers = mutableListOf<Answer>()
+        answers.add(Answer(0, answer1, 0))
+        answers.add(Answer(0, answer2, 0))
+        answers.add(Answer(0, answer3, 0))
+        answers.add(Answer(0, answer4, 0))
+        answers.add(Answer(0, answer5, 0))
+        answers.add(Answer(0, answer6, 0))
+        answers.add(Answer(0, answer7, 0))
+        answers.add(Answer(0, answer8, 0))
+        answers.add(Answer(0, answer9, 0))
+
+        val answersNotEmpty = answers.stream().filter { e -> e.answer.isNotBlank() }
+            .collect(Collectors.toList())
+
+        if (question.isEmpty()) {
+            Toast.makeText(
+                getApplication(),
+                "You will need to add a question first.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        if (answersNotEmpty.size < 2) {
+            Toast.makeText(
+                getApplication(),
+                "You will need to add 2 none empty answers first.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        uiScope.launch {
+            _strawpoll.value = strawpollRepository.getPoll(
+                strawpollRepository.addPoll(
+                    Strawpoll(
+                        0, question, LocalDateTime.now(), answersNotEmpty,
+                        mutableListOf()
+                    )
+                )
+            )
+        }
     }
 
-    private fun createAnswerList() {
-        _answers.value = ArrayList()
-        _answers.value!!.add(Answer(0, "", 0))
-        _answers.value!!.add(Answer(0, "", 0))
-    }
-
-    private fun addAnswerToList() {
-        _answers.value!!.add(Answer(0, "", 0))
-    }
-
-    override fun onCleared() {
-        super.onCleared()
+    fun onNavigated() {
+        _strawpoll.value = null
     }
 }

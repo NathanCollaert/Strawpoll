@@ -88,5 +88,4 @@ class AnswerDiffCallback : DiffUtil.ItemCallback<Answer>() {
     override fun areContentsTheSame(oldItem: Answer, newItem: Answer): Boolean {
         return oldItem == newItem
     }
-
 }

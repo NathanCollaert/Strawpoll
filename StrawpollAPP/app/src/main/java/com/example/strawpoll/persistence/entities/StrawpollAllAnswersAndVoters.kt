@@ -18,7 +18,7 @@ class StrawpollAllAnswersAndVoters {
     var alreadyVoted: MutableList<DatabaseVotedUUID> = ArrayList()
 }
 
-fun List<StrawpollAllAnswersAndVoters>.asDomainModel(): List<Strawpoll> {
+fun List<StrawpollAllAnswersAndVoters>.asDomainModelList(): List<Strawpoll> {
     return map {
         Strawpoll(
             id = it.strawpoll!!.id,
@@ -28,6 +28,17 @@ fun List<StrawpollAllAnswersAndVoters>.asDomainModel(): List<Strawpoll> {
             alreadyVoted = it.alreadyVoted.votedUUIDDBToDomain()
         )
     }
+}
+
+fun StrawpollAllAnswersAndVoters.asDomainModel(): Strawpoll {
+    return Strawpoll(
+        id = this.strawpoll!!.id,
+        question = this.strawpoll!!.question,
+        dateCreated = LocalDateTime.parse(this.strawpoll!!.dateCreated),
+        answers = this.answers.answersDBToDomain(),
+        alreadyVoted = this.alreadyVoted.votedUUIDDBToDomain()
+    )
+
 }
 
 fun MutableList<DatabaseAnswer>.answersDBToDomain(): MutableList<Answer> {

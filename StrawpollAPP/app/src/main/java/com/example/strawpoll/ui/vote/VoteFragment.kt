@@ -1,14 +1,13 @@
 package com.example.strawpoll.ui.vote
 
+import android.annotation.SuppressLint
 import android.content.res.TypedArray
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.util.TypedValue
-import android.view.ContextThemeWrapper
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.core.view.get
@@ -25,6 +24,7 @@ import kotlinx.android.synthetic.main.fragment_vote.*
 
 class VoteFragment : Fragment() {
 
+    @SuppressLint("HardwareIds")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,18 +53,21 @@ class VoteFragment : Fragment() {
             }
         })
 
-        binding.answerGroup.setOnCheckedChangeListener { _, _ ->
+        binding.answerGroup.setOnCheckedChangeListener { e, f ->
+            viewModel._selectedAnswer.value = e.checkedRadioButtonId
             binding.voteButton.isEnabled = true
         }
 
-        binding.voteButton.setOnClickListener { view: View ->
-            viewModel.vote(answerGroup.checkedRadioButtonId)
-            view.findNavController().navigate(
-                VoteFragmentDirections.actionVoteFragmentToResultFragment(
-                    viewModel.selectedStrawpoll.value!!
+        viewModel.success.observe(this, Observer {
+            if (it) {
+                view!!.findNavController().navigate(
+                    VoteFragmentDirections.actionVoteFragmentToResultFragment(
+                        viewModel.selectedStrawpoll.value!!
+                    )
                 )
-            )
-        }
+                viewModel.onNavigated()
+            }
+        })
         return binding.root
     }
 }

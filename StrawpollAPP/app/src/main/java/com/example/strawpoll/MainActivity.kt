@@ -1,6 +1,5 @@
 package com.example.strawpoll
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         @Suppress("UNUSED_VARIABLE")
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         drawerLayout = binding.drawerLayout
         val navController = this.findNavController(R.id.navHostFragment)
@@ -51,12 +50,12 @@ class MainActivity : AppCompatActivity() {
 
         applicationScope.launch {
             val reapeatingReqest = PeriodicWorkRequestBuilder<RefreshDataWork>(
-                1,TimeUnit.DAYS
+                1, TimeUnit.DAYS
             )
                 .setConstraints(constraints)
                 .build()
 
-            WorkManager.getInstance() .enqueueUniquePeriodicWork(
+            WorkManager.getInstance().enqueueUniquePeriodicWork(
                 RefreshDataWork.WORK_NAME,
                 ExistingPeriodicWorkPolicy.KEEP,
                 reapeatingReqest

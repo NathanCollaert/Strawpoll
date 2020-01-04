@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/createFragment"
         android:name="com.example.strawpoll.ui.create.CreateFragment"
-        android:label="fragment_create"
+        android:label="Create A Strawpoll"
         tools:layout="@layout/fragment_create">
         <action
             android:id="@+id/action_createFragment_to_voteFragment"
@@ -18,8 +18,8 @@
     <fragment
         android:id="@+id/voteFragment"
         android:name="com.example.strawpoll.ui.vote.VoteFragment"
-        android:label="fragment_vote"
-        tools:layout="@layout/fragment_vote" >
+        android:label="Vote"
+        tools:layout="@layout/fragment_vote">
         <action
             android:id="@+id/action_voteFragment_to_resultFragment"
             app:destination="@id/resultFragment"
@@ -31,8 +31,8 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.example.strawpoll.ui.list.ListFragment"
-        android:label="fragment_list"
-        tools:layout="@layout/fragment_list" >
+        android:label="Discover"
+        tools:layout="@layout/fragment_list">
         <action
             android:id="@+id/action_listFragment_to_voteFragment"
             app:destination="@+id/voteFragment" />
@@ -43,8 +43,8 @@
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.strawpoll.ui.result.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" >
+        android:label="Result"
+        tools:layout="@layout/fragment_result">
         <argument
             android:name="selectedPoll"
             app:argType="com.example.strawpoll.domain.Strawpoll" />
@@ -52,6 +52,6 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.strawpoll.ui.about.AboutFragment"
-        android:label="fragment_about"
+        android:label="About"
         tools:layout="@layout/fragment_about" />
 </navigation>

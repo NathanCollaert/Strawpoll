@@ -75,7 +75,8 @@
             android:enabled="false"
             android:text="@string/voteButton"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="@{() -> viewModel.vote()}"/>
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="0dp"

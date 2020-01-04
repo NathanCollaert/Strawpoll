@@ -1,10 +1,7 @@
 package com.example.strawpoll.persistence.daos
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.strawpoll.domain.Answer
 import com.example.strawpoll.persistence.StrawpollDatabase
 import com.example.strawpoll.persistence.entities.DatabaseAnswer
@@ -18,6 +15,7 @@ interface StrawpollDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllPolls(vararg strawpolls: DatabaseStrawpoll)
 
+    @Transaction
     @Query("SELECT * FROM databasestrawpoll ORDER BY id DESC")
     fun getPolls(): LiveData<List<StrawpollAllAnswersAndVoters>>
 
@@ -29,4 +27,8 @@ interface StrawpollDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPoll(poll: DatabaseStrawpoll)
+
+    @Transaction
+    @Query("SELECT * FROM databasestrawpoll WHERE id = :givenId")
+    fun getPoll(givenId: Int): StrawpollAllAnswersAndVoters
 }

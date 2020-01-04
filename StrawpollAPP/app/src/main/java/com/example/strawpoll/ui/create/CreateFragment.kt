@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import com.example.strawpoll.R
 import com.example.strawpoll.databinding.FragmentCreateBinding
+import com.example.strawpoll.ui.vote.VoteFragmentDirections
 
 class CreateFragment : Fragment() {
-
-    private lateinit var viewModel: CreateViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +25,37 @@ class CreateFragment : Fragment() {
             R.layout.fragment_create, container, false
         )
 
+        val application = requireNotNull(this.activity).application
+
+        val viewModelFactory = CreateViewModelFactory(application)
+
         val viewModel =
-            ViewModelProviders.of(this).get(CreateViewModel::class.java)
+            ViewModelProviders.of(this, viewModelFactory).get(CreateViewModel::class.java)
 
         binding.lifecycleOwner = this
+
+        binding.viewModel = viewModel
+
+        viewModel.strawpoll.observe(this, Observer {
+            if(it != null){
+                view!!.findNavController().navigate(
+                    CreateFragmentDirections.actionCreateFragmentToVoteFragment(
+                        it
+                    )
+                )
+                viewModel.onNavigated()
+            }
+        })
+
+        //val adapter = CreateAdapter()
+
+        //binding.answerList.adapter = adapter
+
+        //viewModel.answers.observe(viewLifecycleOwner, Observer {
+        //    it?.let {
+        //        adapter.submitList(it)
+        //    }
+        //})
 
         return binding.root
     }

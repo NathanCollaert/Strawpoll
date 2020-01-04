@@ -14,7 +14,7 @@
     <string name="share">share</string>
     <string name="share_success_text">Check out this awesome poll I found on The Strawpoll App!</string>
     <string name="discover">Discover</string>
-    <string name="aboutText">De strawpoll app is een applicatie waarmee je een eigen strawpoll kan maken en delen met je vrienden. Het voting systeem gebeurt annoniem en zonder gegevens bij te houden van de gebruiker. Het aanmaken van een strawpoll is zeer simpel en flexibel.</string>
+    <string name="aboutText">Truth to be told, there are plenty of online polling services around the web. To be different (and better) than others, we try to provide the best experience, easy navigation and fast sharing possibilities. Just to make sure you and your voters are always happy to use our service. In every step from creating to sharing to evaluation of your polls, we are optimizing the process from scratch. If you think anything could be done better, we are always open to hear from you!</string>
     <string name="aboutTitle">About</string>
     <string name="strawpollListItemImageDescription">Total Votes Image</string>
     <string name="listStatus">StatusImage</string>
@@ -22,4 +22,7 @@
     <string name="pollWarning">The content of polls is neither created nor endorsed by strawpoll.</string>
     <string name="votingHint">Choose one answer:</string>
     <string name="createPollMenu">Create a poll</string>
+    <string name="addAnswer">+</string>
+    <string name="AboutString">A straw poll or straw vote is an ad hoc or unofficial vote. It is used to show the popular opinion on a certain matter, and can be used to help politicians know the majority opinion and help them decide what to say in order to gain votes.  Straw polls provide dialogue among movements within large groups. Impromptu straw polls often are taken to see if there is enough support for an idea to devote more meeting time to it, and (when not a secret ballot) for the attendees to see who is on which side of a question.</string>
+    <string name="userExperience">User experience matters</string>
 </resources>

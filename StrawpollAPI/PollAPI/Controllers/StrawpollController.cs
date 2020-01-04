@@ -41,6 +41,16 @@ namespace PollAPI.Controllers
         [HttpPost]
         public ActionResult<Strawpoll> PostStrawpoll(Strawpoll poll)
         {
+            List<Answer> answers = new List<Answer>();
+            poll.Answers.ToList().ForEach(e =>
+            {
+                Answer newAnswer = new Answer(e.AnswerString, e.AmountVoted);
+                answers.Add(newAnswer);
+                _answerRepository.Add(newAnswer);
+            });
+
+            Strawpoll pollDB = new Strawpoll(poll.Question, poll.DateCreated, answers);
+
             _strawpollRepository.Add(poll);
             _strawpollRepository.SaveChanges();
 

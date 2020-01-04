@@ -12602,11 +12602,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\pc_nathan\\source\\repos\\PollAPI\\PollAPI\\PollAPI.csproj",
+      "projectUniqueName": "C:\\Users\\PC_Nathan\\Desktop\\Strawpoll\\StrawpollAPI\\PollAPI\\PollAPI.csproj",
       "projectName": "PollAPI",
-      "projectPath": "c:\\users\\pc_nathan\\source\\repos\\PollAPI\\PollAPI\\PollAPI.csproj",
+      "projectPath": "C:\\Users\\PC_Nathan\\Desktop\\Strawpoll\\StrawpollAPI\\PollAPI\\PollAPI.csproj",
       "packagesPath": "C:\\Users\\PC_Nathan\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\pc_nathan\\source\\repos\\PollAPI\\PollAPI\\obj\\",
+      "outputPath": "C:\\Users\\PC_Nathan\\Desktop\\Strawpoll\\StrawpollAPI\\PollAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
