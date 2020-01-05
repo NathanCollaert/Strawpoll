@@ -15,8 +15,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.strawpoll.R
 import com.example.strawpoll.databinding.FragmentListBinding
+import com.example.strawpoll.domain.Answer
 import com.example.strawpoll.persistence.StrawpollDatabase
 import com.example.strawpoll.ui.vote.VoteFragmentDirections
+import java.util.stream.Collectors
 
 class ListFragment : Fragment() {
 
@@ -54,7 +56,9 @@ class ListFragment : Fragment() {
 
         listViewModel.strawpolls.observe(viewLifecycleOwner, Observer {
             it?.let {
-                adapter.submitList(it)
+                adapter.submitList(it.sortedByDescending { e ->
+                    e.answers.stream().collect(Collectors.summingInt(Answer::amountVoted))
+                })
             }
         })
 

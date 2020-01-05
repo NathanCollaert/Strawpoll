@@ -28,7 +28,7 @@ class ResultFragment : Fragment() {
         val application = requireNotNull(this.activity).application
 
         val viewModelFactory = ResultViewModelFactory(
-            ResultFragmentArgs.fromBundle(arguments!!).selectedPoll,
+            ResultFragmentArgs.fromBundle(arguments!!).selectedStrawpoll,
             application
         )
 

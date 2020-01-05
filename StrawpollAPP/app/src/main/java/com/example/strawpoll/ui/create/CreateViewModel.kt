@@ -48,26 +48,21 @@ class CreateViewModel(app: Application) : AndroidViewModel(app) {
     private val strawpollRepository = StrawpollRepository(database)
     //
 
-    //fun onAnswerChanged() {
-    //    if (!_answers.value!!.map { e -> e.answer }.contains("")) {
-    //        addAnswerToList()
-    //    }
-    //}
-
     fun onSubmit() {
-        val answers = mutableListOf<Answer>()
-        answers.add(Answer(0, answer1, 0))
-        answers.add(Answer(0, answer2, 0))
-        answers.add(Answer(0, answer3, 0))
-        answers.add(Answer(0, answer4, 0))
-        answers.add(Answer(0, answer5, 0))
-        answers.add(Answer(0, answer6, 0))
-        answers.add(Answer(0, answer7, 0))
-        answers.add(Answer(0, answer8, 0))
-        answers.add(Answer(0, answer9, 0))
+        val answers = mutableListOf<String>()
+        answers.add(answer1)
+        answers.add(answer2)
+        answers.add(answer3)
+        answers.add(answer4)
+        answers.add(answer5)
+        answers.add(answer6)
+        answers.add(answer7)
+        answers.add(answer8)
+        answers.add(answer9)
 
-        val answersNotEmpty = answers.stream().filter { e -> e.answer.isNotBlank() }
-            .collect(Collectors.toList())
+        val answersNotEmpty =
+            answers.stream().filter { e -> e.isNotBlank() }.map { e -> Answer(0, e!!, 0) }
+                .collect(Collectors.toList())
 
         if (question.isEmpty()) {
             Toast.makeText(

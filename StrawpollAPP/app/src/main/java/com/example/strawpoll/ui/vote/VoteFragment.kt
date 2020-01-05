@@ -53,7 +53,7 @@ class VoteFragment : Fragment() {
             }
         })
 
-        binding.answerGroup.setOnCheckedChangeListener { e, f ->
+        binding.answerGroup.setOnCheckedChangeListener { e, _ ->
             viewModel._selectedAnswer.value = e.checkedRadioButtonId
             binding.voteButton.isEnabled = true
         }

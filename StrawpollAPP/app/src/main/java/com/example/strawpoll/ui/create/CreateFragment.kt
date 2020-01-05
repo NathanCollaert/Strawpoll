@@ -47,16 +47,6 @@ class CreateFragment : Fragment() {
             }
         })
 
-        //val adapter = CreateAdapter()
-
-        //binding.answerList.adapter = adapter
-
-        //viewModel.answers.observe(viewLifecycleOwner, Observer {
-        //    it?.let {
-        //        adapter.submitList(it)
-        //    }
-        //})
-
         return binding.root
     }
 }

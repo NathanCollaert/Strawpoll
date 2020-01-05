@@ -16,7 +16,7 @@ interface StrawpollDao {
     fun insertAllPolls(vararg strawpolls: DatabaseStrawpoll)
 
     @Transaction
-    @Query("SELECT * FROM databasestrawpoll ORDER BY id DESC")
+    @Query("SELECT * FROM databasestrawpoll")
     fun getPolls(): LiveData<List<StrawpollAllAnswersAndVoters>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
